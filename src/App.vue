@@ -8,7 +8,7 @@
 import Search from './components/Search.vue'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     Search
   }

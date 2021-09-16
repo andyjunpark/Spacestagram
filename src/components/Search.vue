@@ -1,10 +1,12 @@
 <template>
   <div class="search">
     <h2>SPACESTAGRAM</h2>
+    <fas icon="fa-coffee" />
     <form v-on:submit.prevent="getResult(query)">
+      <i class="fas fa-search"></i>
       <input type="text" placeholder="Search" v-model="query" />
     </form>
-    <div v-if="results">
+    <div class="results" v-if="results">
       <div v-for="result in results" :key="result">
         <img v-bind:src="result.links[0].href" />
       </div>
@@ -16,7 +18,7 @@
 import axios from 'axios';
 export default {
   name: 'search',
-  data () {
+  data() {
     return {
       msg:'Search',
       query:'',
@@ -37,6 +39,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.results img {
+  max-width:400px;
+  margin:10px;
+  border-radius:15px;
+}
+
 h3 {
   margin: 40px 0 0;
 }
