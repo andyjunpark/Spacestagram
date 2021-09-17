@@ -12,7 +12,7 @@
             <form v-on:submit.prevent="getResult(query)">
               <input type="text" placeholder="Search" class="search" v-model="query" />
               <a>
-                <i class="fas fa-search" style="color:black;"></i>
+                <i @click="Toggle()" id="btn" class="fas fa-search" style="color:black;"></i>
               </a>
             </form>
         </td>
@@ -28,7 +28,9 @@
           <img v-bind:src="result.links[0].href" />
           <h4>{{result.data[0].title}}</h4>
           <p>{{result.data[0].date_created}}</p>
-          <i class="far fa-star" style="padding-bottom:25px; font-size:30px;"></i>
+          <div class="container">
+            <i v-on:click="Toggle()" id="btn" class="far fa-star" style="padding-bottom:25px; font-size:30px;"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -49,7 +51,7 @@ export default {
     return {
       msg:'Search',
       query:'',
-      results: ''
+      results: '',
     }
   },
   methods: {
@@ -60,7 +62,7 @@ export default {
         this.results = response.data.collection.items;
       });
     }
-  } 
+  }
 }
 </script>
 
@@ -170,6 +172,23 @@ p {
 .search:focus {
   outline:none;
 }
+
+/* Like Button */
+.container {
+  padding-top:20px;
+  border-radius:15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.container i {
+  color:darkslategray;
+  transition: .6s;
+}
+
+.container:hover i{
+  color:black;
+}
+
 
 /* Stars */
 #stars {
