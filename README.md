@@ -1,24 +1,7 @@
-# nasa-photos
+# Spacestagram
 
-## Project setup
+## 
 ```
-npm install
+App live at https://4xjdw.csb.app/
+Codesandbox at https://codesandbox.io/s/spacestagram-4xjdw
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
