@@ -12,13 +12,13 @@
             <form v-on:submit.prevent="getResult(query)">
               <input type="text" placeholder="Search" class="search" v-model="query" />
               <a>
-                <i @click="Toggle()" id="btn" class="fas fa-search" style="color:black;"></i>
+                <i id="btn" class="fas fa-search" style="color:black;"></i>
               </a>
             </form>
         </td>
       </tr>
     </table>
-    <h4 style="font-size:15px; color:white;">Trending: Earth, Moon, Sun, Stars</h4>
+    <h4 style="font-size:15px; color:white">Trending: Earth, Moon, Sun, Stars</h4>
   </div>
 
   <!-- Get Results-->
@@ -29,7 +29,13 @@
           <h4>{{result.data[0].title}}</h4>
           <p>{{result.data[0].date_created}}</p>
           <div class="container">
-            <i v-on:click="Toggle()" id="btn" class="far fa-star" style="padding-bottom:25px; font-size:30px;"></i>
+            <button v-if="likes==0" @click="likes++">
+              <i id="btn" class="far fa-star" style="padding-bottom:25px; font-size:30px;"></i>
+            </button>
+            <button v-if="likes==1" @click="likes--">
+              <i id="btn" class="fas fa-star" style="padding-bottom:25px; font-size:30px;"></i>
+            </button>
+            <span style="font-size:25px;">+ {{ likes }}</span>
           </div>
         </div>
       </div>
@@ -52,6 +58,7 @@ export default {
       msg:'Search',
       query:'',
       results: '',
+      likes:'0'
     }
   },
   methods: {
@@ -130,7 +137,7 @@ p {
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px 0 rgb(255, 255, 255);
 }
 
 .results img {
@@ -174,6 +181,14 @@ p {
 }
 
 /* Like Button */
+button {
+  height: 50px;
+  width: 45px;
+  border: none;
+  background-color:#fff;
+  
+  
+}
 .container {
   padding-top:20px;
   border-radius:15px;
@@ -186,7 +201,7 @@ p {
 }
 
 .container:hover i{
-  color:black;
+  color:rgb(236, 236, 105);
 }
 
 
@@ -768,7 +783,6 @@ p {
     498px 1947px #fff, 617px 880px #fff, 240px 403px #fff;
 }
 
-
 @keyframes animStar {
     from {
         transform: translateY(0px);
@@ -776,5 +790,17 @@ p {
     to {
         transform: translateY(-2000px);
     }
+}
+
+@media only screen and (max-width: 600px) {
+  h2 {
+  margin-top:40%;
+  margin-bottom:15px;
+  font-size:40px;
+  margin-left:auto;
+  margin-right:auto;
+  color:#fff;
+  text-align: center;
+  }
 }
 </style>
